@@ -1,73 +1,82 @@
-# Welcome to your Lovable project
+# 紫微八字
 
-## Project info
+一个基于 React + TypeScript 的中国传统命理学工具网站，提供八字排盘和紫微斗数排盘功能。
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## 功能特性
 
-## How can I edit this code?
+- 🔮 **八字排盘** - 根据出生年月日时计算八字命盘
+- ⭐ **紫微斗数** - 紫微斗数命盘排盘与分析
+- 📚 **知识库** - 天干地支、十神、四化、十二宫等命理知识
+- 📖 **文章博客** - 命理学相关文章阅读
+- 🎨 **现代 UI** - 基于 shadcn/ui 的美观界面
 
-There are several ways of editing your application.
+## 技术栈
 
-**Use Lovable**
+- **前端框架**: React 18 + TypeScript
+- **构建工具**: Vite
+- **UI 组件**: shadcn/ui + Radix UI
+- **样式**: Tailwind CSS
+- **路由**: React Router
+- **状态管理**: React Query
+- **表单处理**: React Hook Form + Zod
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## 快速开始
 
-Changes made via Lovable will be committed automatically to this repo.
+### 安装依赖
 
-**Use your preferred IDE**
+```bash
+npm install
+```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 开发运行
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+访问 http://localhost:8080
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### 构建生产版本
 
-**Use GitHub Codespaces**
+```bash
+npm run build
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### 预览生产构建
 
-## What technologies are used for this project?
+```bash
+npm run preview
+```
 
-This project is built with:
+## 项目结构
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```
+src/
+├── components/     # 组件
+│   ├── home/      # 首页组件
+│   ├── knowledge/ # 知识库组件
+│   ├── layout/    # 布局组件
+│   └── ui/        # UI 组件
+├── lib/           # 工具库
+│   ├── bazi.ts    # 八字计算
+│   ├── ziwei.ts   # 紫微斗数计算
+│   └── calendar.ts # 日历工具
+├── pages/         # 页面
+│   ├── Bazi.tsx   # 八字页面
+│   ├── Ziwei.tsx  # 紫微斗数页面
+│   └── ...
+└── ...
+```
 
-## How can I deploy this project?
+## 主要页面
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+- `/` - 首页
+- `/bazi` - 八字排盘
+- `/ziwei` - 紫微斗数排盘
+- `/knowledge` - 知识库
+- `/blog` - 文章列表
+- `/about` - 关于页面
 
-## Can I connect a custom domain to my Lovable project?
+## License
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+MIT
