@@ -11,7 +11,14 @@ import { calculateBazi, type BaziResult } from "@/lib/bazi";
 import { toast } from "sonner";
 
 const Bazi = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<{
+    year: number | "";
+    month: number | "";
+    day: number | "";
+    hour: number | "";
+    minute: number | "";
+    gender: "male" | "female";
+  }>({
     year: new Date().getFullYear(),
     month: new Date().getMonth() + 1,
     day: new Date().getDate(),
@@ -29,25 +36,25 @@ const Bazi = () => {
 
     try {
       // 验证输入
-      if (formData.year < 1900 || formData.year > 2100) {
+      if (formData.year === "" || formData.year < 1900 || formData.year > 2100) {
         toast.error("请输入1900-2100年之间的年份");
         setIsCalculating(false);
         return;
       }
 
-      if (formData.month < 1 || formData.month > 12) {
+      if (formData.month === "" || formData.month < 1 || formData.month > 12) {
         toast.error("请输入有效的月份");
         setIsCalculating(false);
         return;
       }
 
-      if (formData.day < 1 || formData.day > 31) {
+      if (formData.day === "" || formData.day < 1 || formData.day > 31) {
         toast.error("请输入有效的日期");
         setIsCalculating(false);
         return;
       }
 
-      if (formData.hour < 0 || formData.hour > 23) {
+      if (formData.hour === "" || formData.hour < 0 || formData.hour > 23) {
         toast.error("请输入有效的小时");
         setIsCalculating(false);
         return;
@@ -58,7 +65,7 @@ const Bazi = () => {
         month: formData.month,
         day: formData.day,
         hour: formData.hour,
-        minute: formData.minute || 0,
+        minute: formData.minute === "" ? 0 : formData.minute,
         gender: formData.gender,
       });
 
@@ -117,10 +124,16 @@ const Bazi = () => {
                         <Input
                           id="year"
                           type="number"
-                          value={formData.year}
-                          onChange={(e) =>
-                            setFormData({ ...formData, year: parseInt(e.target.value) || 2000 })
-                          }
+                          value={formData.year === "" ? "" : formData.year}
+                          onChange={(e) => {
+                            const value = e.target.value;
+                            if (value === "") {
+                              setFormData({ ...formData, year: "" });
+                            } else {
+                              const num = parseInt(value);
+                              setFormData({ ...formData, year: isNaN(num) ? "" : num });
+                            }
+                          }}
                           min={1900}
                           max={2100}
                           required
@@ -131,10 +144,16 @@ const Bazi = () => {
                         <Input
                           id="month"
                           type="number"
-                          value={formData.month}
-                          onChange={(e) =>
-                            setFormData({ ...formData, month: parseInt(e.target.value) || 1 })
-                          }
+                          value={formData.month === "" ? "" : formData.month}
+                          onChange={(e) => {
+                            const value = e.target.value;
+                            if (value === "") {
+                              setFormData({ ...formData, month: "" });
+                            } else {
+                              const num = parseInt(value);
+                              setFormData({ ...formData, month: isNaN(num) ? "" : num });
+                            }
+                          }}
                           min={1}
                           max={12}
                           required
@@ -145,10 +164,16 @@ const Bazi = () => {
                         <Input
                           id="day"
                           type="number"
-                          value={formData.day}
-                          onChange={(e) =>
-                            setFormData({ ...formData, day: parseInt(e.target.value) || 1 })
-                          }
+                          value={formData.day === "" ? "" : formData.day}
+                          onChange={(e) => {
+                            const value = e.target.value;
+                            if (value === "") {
+                              setFormData({ ...formData, day: "" });
+                            } else {
+                              const num = parseInt(value);
+                              setFormData({ ...formData, day: isNaN(num) ? "" : num });
+                            }
+                          }}
                           min={1}
                           max={31}
                           required
@@ -159,10 +184,16 @@ const Bazi = () => {
                         <Input
                           id="hour"
                           type="number"
-                          value={formData.hour}
-                          onChange={(e) =>
-                            setFormData({ ...formData, hour: parseInt(e.target.value) || 0 })
-                          }
+                          value={formData.hour === "" ? "" : formData.hour}
+                          onChange={(e) => {
+                            const value = e.target.value;
+                            if (value === "") {
+                              setFormData({ ...formData, hour: "" });
+                            } else {
+                              const num = parseInt(value);
+                              setFormData({ ...formData, hour: isNaN(num) ? "" : num });
+                            }
+                          }}
                           min={0}
                           max={23}
                           required
@@ -173,10 +204,16 @@ const Bazi = () => {
                         <Input
                           id="minute"
                           type="number"
-                          value={formData.minute}
-                          onChange={(e) =>
-                            setFormData({ ...formData, minute: parseInt(e.target.value) || 0 })
-                          }
+                          value={formData.minute === "" ? "" : formData.minute}
+                          onChange={(e) => {
+                            const value = e.target.value;
+                            if (value === "") {
+                              setFormData({ ...formData, minute: "" });
+                            } else {
+                              const num = parseInt(value);
+                              setFormData({ ...formData, minute: isNaN(num) ? "" : num });
+                            }
+                          }}
                           min={0}
                           max={59}
                         />
